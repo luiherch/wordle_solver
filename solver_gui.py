@@ -79,10 +79,7 @@ class WordleSolverApp(ctk.CTk):
         self.show_button.grid(row=1, column=1, padx=4)
 
         self.game_container.grid_rowconfigure(0, weight=1)
-        self.game_container.grid_columnconfigure(1, weight=1)
-        self.game_container.grid_columnconfigure(2, weight=1)
-        self.game_container.grid_columnconfigure(3, weight=1)
-        self.game_container.grid_columnconfigure(4, weight=1)
+        self.game_container.grid_columnconfigure((1,2,3,4), weight=1)
 
         self.game_left = ctk.CTkFrame(self.game_container, width=50, height=200)
         self.game_mid = ctk.CTkFrame(self.game_container, width=250, height=200)
@@ -94,8 +91,7 @@ class WordleSolverApp(ctk.CTk):
         self.game_right.grid(row=0, column=4, sticky="nsew")
 
         # create the center containers
-        self.game_mid.grid_rowconfigure(2, weight=1)
-        self.game_mid.grid_rowconfigure(1, weight=1)
+        self.game_mid.grid_rowconfigure((1,2), weight=1)
         self.game_mid.grid_columnconfigure(0, weight=1)
 
         # create right labels for displaying top entropies
@@ -131,7 +127,6 @@ class WordleSolverApp(ctk.CTk):
     def open_settings(self):
         if self.settings_window is None or not self.settings_window.winfo_exists():
             self.settings_window = Settings(self)
-            self.settings_window.focus()
         else:
             self.settings_window.focus()
 
@@ -233,6 +228,7 @@ class WordleSolverApp(ctk.CTk):
             print("Reduced")
         else:
             print(f"These words are not in the word pool: {missing_words}")
+            MessageScreen(text=f"The following words do not exist: {missing_words}", title="Warning")
 
     def show_entropies(self):
         top_picks = self.solver.show_entropies()
@@ -256,9 +252,7 @@ class Settings(ctk.CTkToplevel):
         self.width = 400
         self.height = 250
         self.geometry(f"{self.width}x{self.height}+{self.width}+{self.height}")
-        self.grid_rowconfigure(0, weight=1)
-        self.grid_rowconfigure(1, weight=1)
-        self.grid_rowconfigure(2, weight=1)
+        self.grid_rowconfigure((0,1,2), weight=1)
         self.grid_columnconfigure(0, weight=1)
         self.vkeyboard_values = ["Default", "QWERTY"]
         self.winfo_toplevel().title("Wordle Solver Settings")
@@ -278,6 +272,41 @@ class Settings(ctk.CTkToplevel):
             variable=self.dad.vkeyboard_option,
         ).grid(row=2, column=0)
 
+        self.after(150, lambda: self.focus())
+
+
+class MessageScreen(ctk.CTkInputDialog):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    def _create_widgets(self):
+
+        self.grid_columnconfigure((0, 1), weight=1)
+        self.rowconfigure(0, weight=1)
+
+        self._label = ctk.CTkLabel(master=self,
+                               width=300,
+                               wraplength=300,
+                               fg_color="transparent",
+                               text_color=self._text_color,
+                               text=self._text,)
+        self._label.grid(row=0, column=0, columnspan=2, padx=20, pady=20, sticky="ew")
+
+        self._ok_button = ctk.CTkButton(master=self,
+                                    width=100,
+                                    border_width=0,
+                                    fg_color=self._button_fg_color,
+                                    hover_color=self._button_hover_color,
+                                    text_color=self._button_text_color,
+                                    text='Accept',
+                                    command=self._ok_event)
+        self._ok_button.grid(row=2, column=0, columnspan=2, padx=(20, 10), pady=(0, 20), sticky="ew")
+
+        self.after(150, lambda: self.focus())
+
+    def _ok_event(self, event=None):
+        self.grab_release()
+        self.destroy()
 
 if __name__ == "__main__":
     app = WordleSolverApp("")
