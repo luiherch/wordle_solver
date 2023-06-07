@@ -1,4 +1,9 @@
 # Wordle Solver using Information Theory
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/luiherch/wordle_solver/blob/main/img/logo_dark.png?raw=true">
+  <source media="(prefers-color-scheme: light)" srcset="https://github.com/luiherch/wordle_solver/blob/main/img/logo_light.png?raw=true">
+  <img alt="Wordle Solver logo" src="https://user-images.githubusercontent.com/25423296/163456779-a8556205-d0a5-45e2-ac17-42d089e3c3f8.png">
+</picture>
 ![Python](https://img.shields.io/badge/python-3.10.10-green)
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
 ## Overview
@@ -33,7 +38,7 @@ This project is a Wordle solver that leverages principles from **information the
 5. Run the solver:
 
    ```bash
-   poetry run python wordle_solver_gui.py
+   poetry run python main.py
    ```
 
 
