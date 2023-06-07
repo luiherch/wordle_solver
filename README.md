@@ -1,8 +1,8 @@
 <h1 align="center">Wordle Solver using Information Theory</h1>
 <p align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/luiherch/wordle_solver/blob/main/img/logo_dark.png?raw=true">
-  <source media="(prefers-color-scheme: light)" srcset="https://github.com/luiherch/wordle_solver/blob/main/img/logo_light.png?raw=true">
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/luiherch/wordle_solver/blob/main/img/logo_light.png?raw=true">
+  <source media="(prefers-color-scheme: light)" srcset="https://github.com/luiherch/wordle_solver/blob/main/img/logo_dark.png?raw=true">
   <img alt="Wordle Solver logo" src="https://user-images.githubusercontent.com/25423296/163456779-a8556205-d0a5-45e2-ac17-42d089e3c3f8.png" width=128px>
 </picture>
 </p>  
