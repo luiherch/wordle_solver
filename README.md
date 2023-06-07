@@ -1,11 +1,17 @@
-# Wordle Solver using Information Theory
+<h1 align="center">Wordle Solver using Information Theory</h1>
+<p align="center">
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://github.com/luiherch/wordle_solver/blob/main/img/logo_dark.png?raw=true">
   <source media="(prefers-color-scheme: light)" srcset="https://github.com/luiherch/wordle_solver/blob/main/img/logo_light.png?raw=true">
-  <img alt="Wordle Solver logo" src="https://user-images.githubusercontent.com/25423296/163456779-a8556205-d0a5-45e2-ac17-42d089e3c3f8.png">
+  <img alt="Wordle Solver logo" src="https://user-images.githubusercontent.com/25423296/163456779-a8556205-d0a5-45e2-ac17-42d089e3c3f8.png" width=128px>
 </picture>
-![Python](https://img.shields.io/badge/python-3.10.10-green)
-[![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
+</p>  
+
+<p align="center">
+  <img src="https://img.shields.io/badge/python-3.10.10-green" alt="Chat">
+  <a href="https://creativecommons.org/licenses/by-nc/4.0/"><img src="https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg" alt="Chat"></a>
+</p> 
+
 ## Overview
 This project is a Wordle solver that leverages principles from **information theory** to efficiently guess the hidden word in the Wordle game. Built using Python and scipy, this solver aims to enhance the player's Wordle experience by providing the statistically best words based on the player's guesses. The solver utilizes a non-comprehensive Spanish dictionary to generate word suggestions.
 
