@@ -53,3 +53,26 @@ def timeit(func):
         return result
 
     return timeit_wrapper
+
+
+def load_words():
+    with open("data/palabras.json", "r") as openfile:
+        word_pool = json.load(openfile)
+    return set(word_pool)
+
+
+def load_cache():
+    with open("cache/h_dict.json", "r") as f:
+        h_dict = json.load(f)
+    return h_dict
+
+
+def convert_tuples_to_strings(dict_:dict):
+        converted_dict = {}
+        for key, value in dict_.items():
+            if isinstance(key, tuple):
+                key = str(key)
+            if isinstance(value, dict):
+                value = convert_tuples_to_strings(value)
+            converted_dict[key] = value
+        return converted_dict

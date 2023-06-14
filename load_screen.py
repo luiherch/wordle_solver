@@ -35,8 +35,3 @@ class LoadScreen(tk.Tk):
         self.loading_label.place(x=10, y=self.height - 28)
 
         self.update_idletasks()
-
-
-if __name__ == "__main__":
-    app = LoadScreen()
-    app.mainloop()
