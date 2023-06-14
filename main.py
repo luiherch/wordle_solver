@@ -1,9 +1,11 @@
 from load_screen import LoadScreen
-from solver import WordleSolver, load_words
+from solver import WordleSolver
 from solver_gui import WordleSolverApp
 import threading
 import queue
 import logging
+import os
+from util.utils import load_cache, load_words
 
 logging.basicConfig(level=logging.INFO)
 
@@ -17,9 +19,16 @@ def build_app(solver):
 
 def init_solver():
     word_pool = load_words()
-    word_pool = set(list(word_pool)[0:2000])
-    wordle_solver = WordleSolver(word_pool)
-    wordle_solver.compute_all()
+
+    if os.path.isfile("cache/h_dict.json"):
+        cache = load_cache()
+        wordle_solver = WordleSolver.from_cache(word_pool,cache)
+        wordle_solver.compute_entropies()
+    else:
+        wordle_solver = WordleSolver(word_pool)
+        wordle_solver.compute_entropies()
+        wordle_solver.entropies_to_json()
+    
     q.put(wordle_solver)
 
 
