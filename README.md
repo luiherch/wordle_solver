@@ -3,7 +3,7 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://github.com/luiherch/wordle_solver/blob/main/img/logo_light.png?raw=true">
   <source media="(prefers-color-scheme: light)" srcset="https://github.com/luiherch/wordle_solver/blob/main/img/logo_dark.png?raw=true">
-  <img alt="Wordle Solver logo" src="https://user-images.githubusercontent.com/25423296/163456779-a8556205-d0a5-45e2-ac17-42d089e3c3f8.png" width=128px>
+  <img alt="Wordle Solver logo" src="https://github.com/luiherch/wordle_solver/blob/main/img/logo_dark.png?raw=true" width=128px>
 </picture>
 </p>  
 
@@ -50,13 +50,28 @@ This project is a Wordle solver that leverages principles from **information the
 
 ## Usage
 
-1. Launch the solver using the installation instructions mentioned above.
+1. Launch the program running `main.py`
 
-2. Click on `show entropies` to see the best words to guess.
+2. Enter the words you have tried using the virtual keyboard
 
-3. Enter any words you have tried and add the colors of the letters in the interface.
+3. Click on the screen buttons to select which pattern you obtained in the wordle game so far
 
-4. Click `compute entropies` to compute again the entropies with the newly inserted words and patterns.
+4. Click on `compute entropies` to compute the best words based on the words and patterns entered
+
+5. Click on `show entropies` to see the best words to guess based on the entropy score of every word
+
+6. Press reset button to try new words and patterns
+
+## To-Do List
+
+- [ ] Integrate physical keyboard
+- [ ] Add multiprocessing to speed up initial computation
+- [ ] Improve light mode appearance
+- [ ] Write comprehensive documentation
+- [ ] Build web version
+- [ ] Add file dialog to change the word dictionary to allow different languages
+- [ ] Improve appearance of light mode
+
 
 ## License
 
