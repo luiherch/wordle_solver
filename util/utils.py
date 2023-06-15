@@ -4,6 +4,7 @@ from unicodedata import normalize
 import time
 import logging
 from functools import wraps
+import pathlib
 
 
 def create_word_pool():
@@ -55,14 +56,14 @@ def timeit(func):
     return timeit_wrapper
 
 
-def load_words():
-    with open("data/palabras.json", "r") as openfile:
-        word_pool = json.load(openfile)
+def load_words(path):
+    with open(path, "r") as f:
+        word_pool = json.load(f)
     return set(word_pool)
 
 
-def load_cache():
-    with open("cache/h_dict.json", "r") as f:
+def load_cache(path):
+    with open(path, "r") as f:
         h_dict = json.load(f)
     return h_dict
 

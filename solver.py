@@ -3,6 +3,7 @@ from scipy import stats
 from heapq import nlargest
 import json
 from util.utils import timeit, coroutine
+import pathlib
 
 
 class WordleSolver:
@@ -94,5 +95,8 @@ class WordleSolver:
         return list(nlargest(10, self.h_dict, key=self.h_dict.get))
 
     def entropies_to_json(self):
-        with open("cache/h_dict.json", "w") as f:
+        script_dir = pathlib.Path(__file__).resolve().parent
+        cache_dir = script_dir / "cache"
+        cache_dir.mkdir(parents=True, exist_ok=True)
+        with open(cache_dir / "h_dict.json", "w") as f:
             json.dump(self.h_dict, f)
