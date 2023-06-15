@@ -15,6 +15,8 @@
 ## Overview
 This project is a Wordle solver that leverages principles from **information theory** to efficiently guess the hidden word in the Wordle game. Built using Python and scipy, this solver aims to enhance the player's Wordle experience by providing the statistically best words based on the player's guesses. The solver utilizes a non-comprehensive Spanish dictionary to generate word suggestions.
 
+Special Thanks to [David Azorin](https://www.behance.net/davidazorin) for designing the logo!
+
 ## Installation
 
 1. Clone the repository:
