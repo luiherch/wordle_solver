@@ -239,6 +239,7 @@ class WordleSolverApp(ctk.CTk):
         self.game_grid[pos].configure(fg_color=color)
 
     def click_vletter(self, s):
+        print(self.pointer)
         self.game_grid[self.pointer].configure(text=s, text_color="black")
         self.letter_matrix[self.pointer] = s
         i, j = self.pointer
@@ -326,6 +327,7 @@ class WordleSolverApp(ctk.CTk):
             self.reading_thread.start()
 
     def stop_reading_thread(self, event):
+        self.reading_thread.stop()
         self.reading_thread = None
 
 
