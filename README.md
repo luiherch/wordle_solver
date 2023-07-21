@@ -66,7 +66,7 @@ Special Thanks to [David Azorin](https://www.behance.net/davidazorin) for design
 
 ## To-Do List
 
-- [ ] Integrate physical keyboard
+- [x] Integrate physical keyboard
 - [ ] Add multiprocessing to speed up initial computation
 - [ ] Improve light mode appearance
 - [ ] Write comprehensive documentation
