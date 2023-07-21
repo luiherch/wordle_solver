@@ -6,6 +6,8 @@ import copy
 import itertools
 from PIL import Image
 from solver import WordleSolver
+import keyboard
+import threading
 
 
 class WordleSolverApp(ctk.CTk):
@@ -164,6 +166,10 @@ class WordleSolverApp(ctk.CTk):
             font=self.main_font,
         ).grid(row=0, column=9, padx=3)
 
+        self.bind("<FocusIn>", self.start_reading_thread)
+        self.bind("<FocusOut>", self.stop_reading_thread)
+        self.reading_thread = None
+
     def open_settings(self):
         if self.settings_window is None or not self.settings_window.winfo_exists():
             self.settings_window = Settings(self)
@@ -300,6 +306,27 @@ class WordleSolverApp(ctk.CTk):
             word_pool=self.main_pool, h_dict=self.main_h_dict
         )
         self.solver.compute_entropies()
+
+    def read_keyboard_input(self):
+        while self.reading_thread and self.focus_get() == self:
+            event = keyboard.read_event(suppress=False)
+            if event.event_type == keyboard.KEY_UP:
+                char = event.name
+                if char == "backspace":
+                    self.erase_letter()
+                elif char.isalpha() and len(char) == 1:
+                    self.click_vletter(char.upper())
+                else:
+                    logging.debug("Not alpha")
+
+    def start_reading_thread(self, event):
+        if not self.reading_thread:
+            self.reading_thread = threading.Thread(target=self.read_keyboard_input)
+            self.reading_thread.daemon = True
+            self.reading_thread.start()
+
+    def stop_reading_thread(self, event):
+        self.reading_thread = None
 
 
 class Settings(ctk.CTkToplevel):
